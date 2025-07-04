@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import Logo from '../assets/Logo.png';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,12 +23,8 @@ const Login = () => {
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-xl">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-blue-600 font-bold text-lg">B</span>
-              </div>
-            </div>
+          <Link to="/" className="inline-flex items-center justify-center w-full">
+            <img src={Logo} alt="Logo BrasilCodeGap" className="mx-auto w-24 h-24 object-contain" />
           </Link>
           <h1 className="text-2xl font-bold text-white mt-4">Entrar na BrasilCodeGap</h1>
           <p className="text-gray-400 mt-2">Acelere sua carreira em tecnologia</p>
