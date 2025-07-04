@@ -4,12 +4,15 @@
 
 O BrasilCode Hub Academy é uma plataforma de código aberto para aprendizado e ensino de programação, focada na comunidade brasileira de desenvolvedores. O objetivo é fornecer um ambiente rico em conteúdo, como cursos, tutoriais e artigos, para ajudar tanto iniciantes a darem seus primeiros passos quanto desenvolvedores experientes a se aprofundarem em novas tecnologias.
 
+**URL do projeto DevLeoFulco:**  
+https://devleofulco.dev/projects/5561630d-4572-4723-bdb9-1931a6520784
+
 ## ✨ Funcionalidades
 
--   Visualização de cursos disponíveis.
--   Sistema de registro e login de usuários.
--   Painel administrativo para gerenciamento de conteúdo.
--   Design responsivo para acesso em diferentes dispositivos.
+- Visualização de cursos disponíveis.
+- Sistema de registro e login de usuários.
+- Painel administrativo para gerenciamento de conteúdo.
+- Design responsivo para acesso em diferentes dispositivos.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -35,10 +38,10 @@ Isso nos dá total controle sobre o código dos componentes, permitindo customiz
 
 ## 🏗️ Arquitetura e Padrões de Projeto
 
--   **Arquitetura Baseada em Componentes:** A aplicação é estruturada em componentes reutilizáveis, seguindo o padrão do React. A organização de pastas (`src/pages`, `src/components`, `src/hooks`, `src/lib`) reflete uma separação clara de responsabilidades, facilitando a manutenção e escalabilidade.
--   **Provider Pattern:** Utilizado para prover contexto global à aplicação, como pode ser visto no `App.tsx` com o `QueryClientProvider` e o `BrowserRouter`.
--   **Hook Pattern:** A lógica reutilizável é extraída para custom hooks (ex: `useAuth`), centralizando e simplificando o estado e os efeitos nos componentes.
--   **Composição de Componentes:** O `shadcn/ui` promove a composição como principal forma de construir interfaces complexas a partir de blocos de construção simples e reutilizáveis.
+- **Arquitetura Baseada em Componentes:** A aplicação é estruturada em componentes reutilizáveis, seguindo o padrão do React. A organização de pastas (`src/pages`, `src/components`, `src/hooks`, `src/lib`) reflete uma separação clara de responsabilidades, facilitando a manutenção e escalabilidade.
+- **Provider Pattern:** Utilizado para prover contexto global à aplicação, como pode ser visto no `App.tsx` com o `QueryClientProvider` e o `BrowserRouter`.
+- **Hook Pattern:** A lógica reutilizável é extraída para custom hooks (ex: `useAuth`), centralizando e simplificando o estado e os efeitos nos componentes.
+- **Composição de Componentes:** O `shadcn/ui` promove a composição como principal forma de construir interfaces complexas a partir de blocos de construção simples e reutilizáveis.
 
 ## 🚀 Como Executar o Projeto Localmente
 
@@ -70,10 +73,10 @@ npm run dev
 
 O BrasilCode Hub Academy está em constante evolução. Os próximos objetivos incluem:
 
--   [ ] Implementação completa do fluxo de autenticação e autorização com JWT.
--   [ ] Desenvolvimento de um backend em Node.js com NestJS para servir a API.
--   [ ] Adição de testes unitários e de integração com Vitest e React Testing Library.
--   [ ] Criação de mais cursos e conteúdos sobre tecnologias em alta.
--   [ ] Configuração de um pipeline de CI/CD para automação de deploy.
+- [ ] Implementação completa do fluxo de autenticação e autorização com JWT.
+- [ ] Desenvolvimento de um backend em Node.js com NestJS para servir a API.
+- [ ] Adição de testes unitários e de integração com Vitest e React Testing Library.
+- [ ] Criação de mais cursos e conteúdos sobre tecnologias em alta.
+- [ ] Configuração de um pipeline de CI/CD para automação de deploy.
 
 Contribuições são bem-vindas! Se você tem interesse em ajudar, por favor, abra uma issue para discutir suas ideias.

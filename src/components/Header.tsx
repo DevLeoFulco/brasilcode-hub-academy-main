@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Search, Menu, User, BookOpen, MapPin, Settings, LogOut } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 const Header = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
   // Buscar usuário do localStorage
   const user = (() => {
@@ -14,6 +17,12 @@ const Header = () => {
       return null;
     }
   })();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+    setIsProfileMenuOpen(false);
+  };
 
   return (
     <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
@@ -89,7 +98,10 @@ const Header = () => {
                   Configurações
                 </Link>
                 <hr className="my-1 border-gray-700" />
-                <button className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                <button 
+                  onClick={handleLogout}
+                  className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
+                >
                   <LogOut className="mr-3 h-4 w-4" />
                   Sair
                 </button>
