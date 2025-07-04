@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+# BrasilCode Hub Academy
 
-## Project info
+## 🎯 Sobre o Projeto
 
-**URL**: https://lovable.dev/projects/5561630d-4572-4723-bdb9-1931a6520784
+O BrasilCode Hub Academy é uma plataforma de código aberto para aprendizado e ensino de programação, focada na comunidade brasileira de desenvolvedores. O objetivo é fornecer um ambiente rico em conteúdo, como cursos, tutoriais e artigos, para ajudar tanto iniciantes a darem seus primeiros passos quanto desenvolvedores experientes a se aprofundarem em novas tecnologias.
 
-## How can I edit this code?
+## ✨ Funcionalidades
 
-There are several ways of editing your application.
+-   Visualização de cursos disponíveis.
+-   Sistema de registro e login de usuários.
+-   Painel administrativo para gerenciamento de conteúdo.
+-   Design responsivo para acesso em diferentes dispositivos.
 
-**Use Lovable**
+## 🛠️ Tecnologias Utilizadas
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5561630d-4572-4723-bdb9-1931a6520784) and start prompting.
+Este projeto foi construído com as seguintes tecnologias e bibliotecas:
 
-Changes made via Lovable will be committed automatically to this repo.
+| Tecnologia             | Versão        | Descrição                                         |
+| ---------------------- | ------------- | ------------------------------------------------- |
+| **React**              | `^18.3.1`     | Biblioteca para construção de interfaces de usuário.      |
+| **Vite**               | `^5.4.1`      | Ferramenta de build e desenvolvimento rápido.         |
+| **TypeScript**         | `^5.5.3`      | Superset de JavaScript que adiciona tipagem estática.     |
+| **Tailwind CSS**       | `^3.4.11`     | Framework CSS utility-first para estilização.       |
+| **React Router**       | `^6.26.2`     | Para gerenciamento de rotas na aplicação.         |
+| **TanStack Query**     | `^5.56.2`     | Gerenciamento de estado de servidor (Server State). |
+| **React Hook Form**    | `^7.53.0`     | Gerenciamento de formulários com validação.       |
+| **Zod**                | `^3.23.8`     | Validação de esquemas de dados.                     |
+| **ESLint**             | `^9.9.0`      | Ferramenta de linting para JavaScript/TypeScript. |
 
-**Use your preferred IDE**
+## 🎨 Design System
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+O projeto utiliza o **shadcn/ui** como base para seu Design System. Diferente de bibliotecas de componentes tradicionais, `shadcn/ui` não é um pacote NPM instalável. Em vez disso, ele fornece um conjunto de componentes reutilizáveis, acessíveis e customizáveis que são copiados diretamente para a base de código do projeto.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Isso nos dá total controle sobre o código dos componentes, permitindo customizações profundas para atender às necessidades específicas da BrasilCode Hub Academy. Os componentes são construídos sobre **Radix UI** (para primitivas de UI acessíveis) e estilizados com **Tailwind CSS**.
 
-Follow these steps:
+## 🏗️ Arquitetura e Padrões de Projeto
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+-   **Arquitetura Baseada em Componentes:** A aplicação é estruturada em componentes reutilizáveis, seguindo o padrão do React. A organização de pastas (`src/pages`, `src/components`, `src/hooks`, `src/lib`) reflete uma separação clara de responsabilidades, facilitando a manutenção e escalabilidade.
+-   **Provider Pattern:** Utilizado para prover contexto global à aplicação, como pode ser visto no `App.tsx` com o `QueryClientProvider` e o `BrowserRouter`.
+-   **Hook Pattern:** A lógica reutilizável é extraída para custom hooks (ex: `useAuth`), centralizando e simplificando o estado e os efeitos nos componentes.
+-   **Composição de Componentes:** O `shadcn/ui` promove a composição como principal forma de construir interfaces complexas a partir de blocos de construção simples e reutilizáveis.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🚀 Como Executar o Projeto Localmente
 
-# Step 3: Install the necessary dependencies.
-npm i
+Para executar o projeto em seu ambiente de desenvolvimento, siga os passos abaixo. É necessário ter o **Bun** ou **Node.js** (v18+) instalado.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/brasilcode-hub-academy-main.git
+
+# 2. Navegue até o diretório do projeto
+cd brasilcode-hub-academy-main
+
+# 3. Instale as dependências
+# Usando bun
+bun install
+# Ou usando npm
+npm install
+
+# 4. Inicie o servidor de desenvolvimento
+# Usando bun
+bun dev
+# Ou usando npm
 npm run dev
+
+# 5. Abra http://localhost:5173 no seu navegador para ver a aplicação.
 ```
 
-**Edit a file directly in GitHub**
+## 📈 Próximos Passos e Contribuições
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+O BrasilCode Hub Academy está em constante evolução. Os próximos objetivos incluem:
 
-**Use GitHub Codespaces**
+-   [ ] Implementação completa do fluxo de autenticação e autorização com JWT.
+-   [ ] Desenvolvimento de um backend em Node.js com NestJS para servir a API.
+-   [ ] Adição de testes unitários e de integração com Vitest e React Testing Library.
+-   [ ] Criação de mais cursos e conteúdos sobre tecnologias em alta.
+-   [ ] Configuração de um pipeline de CI/CD para automação de deploy.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/5561630d-4572-4723-bdb9-1931a6520784) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Contribuições são bem-vindas! Se você tem interesse em ajudar, por favor, abra uma issue para discutir suas ideias.
