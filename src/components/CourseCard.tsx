@@ -27,7 +27,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   isNew = false
 }) => {
   return (
-    <div className="bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-700">
+    <div className="bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-700">
       {/* Course Image */}
       <div className="relative">
         <img 
