@@ -125,20 +125,20 @@ ON CONFLICT (email) DO NOTHING;
 
 -- Insert sample courses
 INSERT INTO courses (title, description, category, duration, technologies, image_url, instructor_id) VALUES
-('React Avançado: Do Zero ao Deploy', 'Aprenda React do básico ao avançado com projetos práticos e deploy em produção.', 'Frontend', '42h', ARRAY['React', 'TypeScript', 'Next.js', 'Tailwind'], 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop', 1),
-('Python para Data Science', 'Domine Python para análise de dados, machine learning e visualização.', 'Data Science', '35h', ARRAY['Python', 'Pandas', 'NumPy', 'Scikit-learn'], 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', 1),
-('DevOps com Docker e Kubernetes', 'Aprenda containerização e orquestração para deploy escalável.', 'DevOps', '28h', ARRAY['Docker', 'Kubernetes', 'AWS', 'CI/CD'], 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop', 1),
-('Node.js e APIs REST', 'Construa APIs robustas e escaláveis com Node.js e Express.', 'Backend', '32h', ARRAY['Node.js', 'Express', 'MongoDB', 'JWT'], 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop', 1),
-('React Native: Apps Multiplataforma', 'Desenvolva aplicativos mobile para iOS e Android com React Native.', 'Mobile', '38h', ARRAY['React Native', 'Expo', 'TypeScript', 'Redux'], 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop', 1),
-('AWS Cloud Fundamentals', 'Domine os serviços essenciais da AWS para cloud computing.', 'Cloud', '25h', ARRAY['AWS', 'EC2', 'S3', 'Lambda'], 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop', 1)
+('Banco Inter - React', 'Aprenda como o Banco Inter aplica o React no seu dia a dia.', 'Frontend', '42h', ARRAY['React', 'TypeScript', 'Next.js', 'Tailwind'], 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop', 1),
+('Banco Inter - Docker', 'Aprenda como o Banco Inter trabalha com o Docker no dia a dia.', 'DevOps', '35h', ARRAY['Docker', 'Kubernetes', 'CI/CD', 'AWS'], 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', 1),
+('Banco Inter - TypeScript', 'Aprenda como o TypeScript é usado no dia a dia do Banco Inter.', 'Backend', '58h', ARRAY['JavaScript', 'TypeScript'], 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop', 1),
+('Banco do Brasil - Node.js e APIs REST', 'Aprenda a construir APIs robustas e escaláveis da forma como o BB usa no dia a dia.', 'Backend', '42h', ARRAY['Node.js', 'Express', 'MongoDB', 'JWT'], 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop', 1),
+('Banco do Brasil - Java', 'Aprenda a usar o Java como o BB usa.', 'Backend', '78h', ARRAY['Java', 'Maven', 'Junit', 'POO'], 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop', 1),
+('Banco do Brasil - AWS Cloud Fundamentals', 'Domine os serviços essenciais de cloud computing como o BB faz.', 'Cloud', '25h', ARRAY['AWS', 'EC2', 'S3', 'Lambda'], 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop', 1)
 ON CONFLICT DO NOTHING;
 
 -- Insert sample ratings
 INSERT INTO course_ratings (user_id, course_id, rating, comment) VALUES
 (2, 1, 5, 'Excelente curso! Muito bem estruturado.'),
 (3, 1, 4, 'Conteúdo muito bom, recomendo.'),
-(2, 2, 5, 'Perfeito para iniciantes em Data Science.'),
-(3, 3, 4, 'Ótimo curso de DevOps.')
+(2, 2, 5, 'Perfeito para iniciantes sem base alguma.'),
+(3, 3, 4, 'Ótimo curso! Ja quero repetir!.')
 ON CONFLICT DO NOTHING;
 
 -- Insert sample enrollments

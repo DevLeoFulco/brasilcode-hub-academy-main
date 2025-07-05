@@ -1,12 +1,19 @@
-
 import React, { useState } from 'react';
 import { Filter, ChevronDown } from 'lucide-react';
+import { CourseFilters } from '@/types/course';
 
-const FilterBar = () => {
+interface FilterBarProps {
+  onFilterChange?: (filters: Partial<CourseFilters>) => void;
+  onClearFilters?: () => void;
+}
+
+const FilterBar: React.FC<FilterBarProps> = ({ onFilterChange, onClearFilters }) => {
   const [activeFilter, setActiveFilter] = useState('todos');
   const [showAreaDropdown, setShowAreaDropdown] = useState(false);
   const [showDurationDropdown, setShowDurationDropdown] = useState(false);
   const [showTechDropdown, setShowTechDropdown] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
 
   const areas = [
     'Frontend', 'Backend', 'DevOps', 'Mobile', 'IA', 'Cloud', 'Data Science', 'Cybersecurity'
@@ -20,6 +27,29 @@ const FilterBar = () => {
     'React', 'JavaScript', 'Python', 'Java', 'Node.js', 'TypeScript', 'Angular', 'Vue.js'
   ];
 
+  const handleFilterChange = (filterType: string, value: string | string[]) => {
+    const filters: Partial<CourseFilters> = {};
+    
+    if (filterType === 'category') {
+      filters.category = value as string;
+      setSelectedCategory(value as string);
+    } else if (filterType === 'technologies') {
+      filters.technologies = value as string[];
+      setSelectedTechnologies(value as string[]);
+    }
+    
+    onFilterChange?.(filters);
+  };
+
+  const handleQuickFilter = (filter: string) => {
+    setActiveFilter(filter);
+    if (filter === 'todos') {
+      onClearFilters?.();
+      setSelectedCategory('');
+      setSelectedTechnologies([]);
+    }
+  };
+
   return (
     <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-8">
       <div className="flex items-center gap-4 flex-wrap">
@@ -31,7 +61,7 @@ const FilterBar = () => {
         {/* Quick Filters */}
         <div className="flex gap-2 flex-wrap">
           <button
-            onClick={() => setActiveFilter('todos')}
+            onClick={() => handleQuickFilter('todos')}
             className={`px-3 py-1 rounded-full text-sm transition-colors ${
               activeFilter === 'todos' 
                 ? 'bg-blue-600 text-white' 
@@ -41,7 +71,7 @@ const FilterBar = () => {
             Todos
           </button>
           <button
-            onClick={() => setActiveFilter('recentes')}
+            onClick={() => handleQuickFilter('recentes')}
             className={`px-3 py-1 rounded-full text-sm transition-colors ${
               activeFilter === 'recentes' 
                 ? 'bg-blue-600 text-white' 
@@ -51,7 +81,7 @@ const FilterBar = () => {
             Recentes
           </button>
           <button
-            onClick={() => setActiveFilter('populares')}
+            onClick={() => handleQuickFilter('populares')}
             className={`px-3 py-1 rounded-full text-sm transition-colors ${
               activeFilter === 'populares' 
                 ? 'bg-blue-600 text-white' 
@@ -76,6 +106,10 @@ const FilterBar = () => {
               {areas.map((area) => (
                 <button
                   key={area}
+                  onClick={() => {
+                    handleFilterChange('category', area);
+                    setShowAreaDropdown(false);
+                  }}
                   className="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors first:rounded-t-lg last:rounded-b-lg"
                 >
                   {area}
@@ -122,7 +156,17 @@ const FilterBar = () => {
               {technologies.map((tech) => (
                 <button
                   key={tech}
-                  className="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors first:rounded-t-lg last:rounded-b-lg"
+                  onClick={() => {
+                    const newTechs = selectedTechnologies.includes(tech)
+                      ? selectedTechnologies.filter(t => t !== tech)
+                      : [...selectedTechnologies, tech];
+                    handleFilterChange('technologies', newTechs);
+                  }}
+                  className={`w-full text-left px-4 py-2 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                    selectedTechnologies.includes(tech)
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
                 >
                   {tech}
                 </button>
@@ -130,6 +174,21 @@ const FilterBar = () => {
             </div>
           )}
         </div>
+
+        {/* Clear Filters */}
+        {(selectedCategory || selectedTechnologies.length > 0) && (
+          <button
+            onClick={() => {
+              onClearFilters?.();
+              setSelectedCategory('');
+              setSelectedTechnologies([]);
+              setActiveFilter('todos');
+            }}
+            className="px-3 py-1 bg-red-600 text-white rounded-full text-sm hover:bg-red-700 transition-colors"
+          >
+            Limpar Filtros
+          </button>
+        )}
       </div>
     </div>
   );
