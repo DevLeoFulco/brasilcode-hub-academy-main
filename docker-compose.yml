@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Imagem do meu Front End 
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000/api
+    networks:
+      - brasilcodegap-network
+    restart: unless-stopped
+
+  # Imagem do PostgreSQL 
+  postgres:
+    image: postgres:15-alpine
+    container_name: brasilcodegap-postgres
+    environment:
+      POSTGRES_DB: brasilcodegap
+      POSTGRES_USER: leofulco
+      POSTGRES_PASSWORD: admin2501
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - brasilcodegap-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d brasilcodegap"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Imagem do PgAdmin para o caso de eu querer analisar o banco de dados
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: brasilcodegap-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@brasilcodegap.com
+      PGADMIN_DEFAULT_PASSWORD: admin2501
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - brasilcodegap-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  brasilcodegap-network:
+    driver: bridge 
