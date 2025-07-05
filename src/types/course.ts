@@ -20,6 +20,9 @@ export interface CourseFilters {
   difficulty?: string;
   technologies?: string[];
   search?: string;
+  company?: string;
+  price?: string;
+  type?: string;
 }
 
 export interface CourseEnrollment {
